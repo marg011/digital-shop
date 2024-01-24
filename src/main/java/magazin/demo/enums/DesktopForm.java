@@ -1,4 +1,4 @@
-package magazin.demo.dto;
+package magazin.demo.enums;
 
 public enum DesktopForm {
     DESKTOP("desktop"),

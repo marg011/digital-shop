@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HardDisks {
+public class MonitorsDTO {
 
     private int serialNumber;
     private String manufacturer;
     private int price;
     private int quantity;
-    private int memory;
+    private int diagonal;
 }

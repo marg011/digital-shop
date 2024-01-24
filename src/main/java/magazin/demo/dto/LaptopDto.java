@@ -3,6 +3,7 @@ package magazin.demo.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import magazin.demo.enums.LaptopSize;
 
 @Data
 @AllArgsConstructor
