@@ -19,7 +19,7 @@ public class MonitorsEntity {
     private Long id;
 
     @Column(name = "серийный_номер")
-    private int serialNumber;
+    private long serialNumber;
 
     @Column(name = "производитель")
     private String manufacturer;

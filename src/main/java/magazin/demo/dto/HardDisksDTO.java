@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class HardDisksDTO {
 
-    private int serialNumber;
+    private long serialNumber;
     private String manufacturer;
     private int price;
     private int quantity;
