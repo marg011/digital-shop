@@ -16,7 +16,7 @@ public class HardDisksEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "серийный_номер")
     private int serialNumber;

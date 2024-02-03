@@ -16,7 +16,7 @@ public class MonitorsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "серийный_номер")
     private long serialNumber;

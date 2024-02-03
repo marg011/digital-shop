@@ -9,6 +9,7 @@ import magazin.demo.enums.LaptopSize;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LaptopDto {
+
     private long serialNumber;
     private String manufacturer;
     private int price;
