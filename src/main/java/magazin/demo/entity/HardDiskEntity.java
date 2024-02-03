@@ -11,7 +11,7 @@ import lombok.*;
 @Builder
 @Table(name = "жесткие_диски")
 @Data
-public class HardDisksEntity {
+public class HardDiskEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -11,7 +11,7 @@ import lombok.*;
 @Builder
 @Table(name = "мониторы")
 @Data
-public class MonitorsEntity {
+public class MonitorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
