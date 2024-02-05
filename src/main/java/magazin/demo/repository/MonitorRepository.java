@@ -7,6 +7,4 @@ import java.util.Optional;
 
 public interface MonitorRepository extends JpaRepository<MonitorEntity, Integer> {
 
-
-
 }
