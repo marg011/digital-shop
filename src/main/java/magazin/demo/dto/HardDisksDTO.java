@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class HardDisksDTO {
 
+    private  int id;
 
 
     private long serialNumber;
