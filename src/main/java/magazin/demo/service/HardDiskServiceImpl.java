@@ -27,6 +27,9 @@ public class HardDiskServiceImpl implements HardDiskService {
     @Override
     public HardDisksDTO createHardDisk(HardDisksDTO hardDiskDTO) throws HardDiskAlreadyExistsException {
         try {
+            if (hardDiskRepository.existsBySerialNumber(hardDiskDTO.getSerialNumber())) {
+                throw new HardDiskAlreadyExistsException("Жесткий диск с таким серийным номером уже существует");
+            }
             HardDiskEntity hardDiskEntity = hardDisksMapper.dtoToEntity(hardDiskDTO);
             HardDiskEntity savedEntity = hardDiskRepository.save(hardDiskEntity);
             return hardDisksMapper.entityToDto(savedEntity);
@@ -36,7 +39,7 @@ public class HardDiskServiceImpl implements HardDiskService {
     }
 
     @Override
-    public HardDisksDTO readHardDiskById(int id) throws HardDiskNotFoundException {
+    public HardDisksDTO readHardDiskById(long id) throws HardDiskNotFoundException {
         Optional<HardDiskEntity> hardDiskEntityOptional = hardDiskRepository.findById(id);
 
         if (hardDiskEntityOptional.isPresent()) {
@@ -59,7 +62,7 @@ public class HardDiskServiceImpl implements HardDiskService {
     }
 
     @Override
-    public HardDisksDTO updateHardDisk(int id, HardDisksDTO updatedHardDiskDTO) throws HardDiskNotFoundException {
+    public HardDisksDTO updateHardDisk(long id, HardDisksDTO updatedHardDiskDTO) throws HardDiskNotFoundException {
         Optional<HardDiskEntity> optionalHardDisk = hardDiskRepository.findById(id);
 
         if (optionalHardDisk.isPresent()) {
@@ -76,7 +79,7 @@ public class HardDiskServiceImpl implements HardDiskService {
     }
 
     @Override
-    public void deleteHardDisk(int id) throws HardDiskNotFoundException {
+    public void deleteHardDisk(long id) throws HardDiskNotFoundException {
         Optional<HardDiskEntity> optionalHardDisk = hardDiskRepository.findById(id);
 
         if (optionalHardDisk.isPresent()) {

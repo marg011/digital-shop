@@ -12,15 +12,15 @@ public interface MonitorService {
     MonitorsDTO createMonitor(MonitorsDTO monitorDTO) throws MonitorAlreadyExistsException;
 
 
-    MonitorsDTO readMonitorById(int id) throws MonitorNotFoundException;
+    MonitorsDTO readMonitorById(long id) throws MonitorNotFoundException;
 
 
     List<MonitorsDTO> findAllMonitors();
 
 
-    MonitorsDTO updateMonitor(int id, MonitorsDTO updatedMonitorDTO) throws ChangeSetPersister.NotFoundException, MonitorNotFoundException;
+    MonitorsDTO updateMonitor(long id, MonitorsDTO updatedMonitorDTO) throws ChangeSetPersister.NotFoundException, MonitorNotFoundException;
 
 
-    void deleteMonitor(int id) throws ChangeSetPersister.NotFoundException, MonitorNotFoundException;
+    void deleteMonitor(long id) throws ChangeSetPersister.NotFoundException, MonitorNotFoundException;
 
 }

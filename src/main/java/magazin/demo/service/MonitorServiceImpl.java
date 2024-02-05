@@ -27,6 +27,9 @@ public class MonitorServiceImpl implements MonitorService {
     @Override
     public MonitorsDTO createMonitor(MonitorsDTO monitorDTO) throws MonitorAlreadyExistsException {
         try {
+            if (monitorRepository.existsBySerialNumber(monitorDTO.getSerialNumber())) {
+                throw new MonitorAlreadyExistsException("Монитор с таким серийным номером уже существует");
+            }
             MonitorEntity monitorEntity = monitorsMapper.dtoToEntity(monitorDTO);
             MonitorEntity savedEntity = monitorRepository.save(monitorEntity);
             return monitorsMapper.entityToDto(savedEntity);
@@ -37,7 +40,7 @@ public class MonitorServiceImpl implements MonitorService {
     }
 
     @Override
-    public MonitorsDTO readMonitorById(int id) throws MonitorNotFoundException {
+    public MonitorsDTO readMonitorById(long id) throws MonitorNotFoundException {
         Optional<MonitorEntity> monitorEntityOptional = monitorRepository.findById(id);
 
         if (monitorEntityOptional.isPresent()) {
@@ -60,7 +63,7 @@ public class MonitorServiceImpl implements MonitorService {
     }
 
     @Override
-    public MonitorsDTO updateMonitor(int id, MonitorsDTO updatedMonitorDTO) throws MonitorNotFoundException {
+    public MonitorsDTO updateMonitor(long id, MonitorsDTO updatedMonitorDTO) throws MonitorNotFoundException {
         Optional<MonitorEntity> optionalMonitor = monitorRepository.findById(id);
 
         if (optionalMonitor.isPresent()) {
@@ -81,7 +84,7 @@ public class MonitorServiceImpl implements MonitorService {
     }
 
     @Override
-    public void deleteMonitor(int id) throws MonitorNotFoundException {
+    public void deleteMonitor(long id) throws MonitorNotFoundException {
         Optional<MonitorEntity> optionalMonitor = monitorRepository.findById(id);
 
         if (optionalMonitor.isPresent()) {

@@ -1,6 +1,7 @@
 package magazin.demo.exception.monitors;
 
 public class MonitorNotFoundException extends Throwable {
-    public MonitorNotFoundException(String s) {
+    public MonitorNotFoundException(String message) {
+        super(message);
     }
 }

@@ -10,11 +10,11 @@ public interface HardDiskService {
 
     HardDisksDTO createHardDisk(HardDisksDTO hardDiskDTO) throws HardDiskAlreadyExistsException;
 
-    HardDisksDTO readHardDiskById(int id) throws HardDiskNotFoundException;
+    HardDisksDTO readHardDiskById(long id) throws HardDiskNotFoundException;
 
     List<HardDisksDTO> findAllHardDisks();
 
-    HardDisksDTO updateHardDisk(int id, HardDisksDTO updatedHardDiskDTO) throws HardDiskNotFoundException;
+    HardDisksDTO updateHardDisk(long id, HardDisksDTO updatedHardDiskDTO) throws HardDiskNotFoundException;
 
-    void deleteHardDisk(int id) throws HardDiskNotFoundException;
+    void deleteHardDisk(long id) throws HardDiskNotFoundException;
 }

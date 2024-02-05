@@ -19,7 +19,7 @@ public class HardDiskEntity {
     private int id;
 
     @Column(name = "серийный_номер")
-    private int serialNumber;
+    private long serialNumber;
 
     @Column(name = "производитель")
     private String manufacturer;
