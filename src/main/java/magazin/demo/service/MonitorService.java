@@ -1,22 +1,26 @@
 package magazin.demo.service;
 
 import magazin.demo.dto.MonitorsDTO;
+import magazin.demo.exception.monitors.MonitorAlreadyExistsException;
+import magazin.demo.exception.monitors.MonitorNotFoundException;
+import org.springframework.data.crossstore.ChangeSetPersister;
 
 import java.util.List;
 
 public interface MonitorService {
 
-    MonitorsDTO createMonitor(MonitorsDTO monitorDTO);
+    MonitorsDTO createMonitor(MonitorsDTO monitorDTO) throws MonitorAlreadyExistsException;
 
 
-    MonitorsDTO readMonitorById(Long id);
+    MonitorsDTO readMonitorById(int id) throws MonitorNotFoundException;
 
 
     List<MonitorsDTO> findAllMonitors();
 
 
-    MonitorsDTO updateMonitor(Long id, MonitorsDTO updatedMonitorDTO);
+    MonitorsDTO updateMonitor(int id, MonitorsDTO updatedMonitorDTO) throws ChangeSetPersister.NotFoundException, MonitorNotFoundException;
 
 
-    void deleteMonitor(Long id);
+    void deleteMonitor(int id) throws ChangeSetPersister.NotFoundException, MonitorNotFoundException;
+
 }

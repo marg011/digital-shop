@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MonitorsDTO {
 
+
+
     private long serialNumber;
     private String manufacturer;
     private int price;
