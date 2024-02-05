@@ -10,6 +10,6 @@ public class HelloController { // для проверки гипотезы
 
     @GetMapping
     public String sayHello() {
-        return "Привет, это магазин'!";
+        return "Привет, это магазин !";
     }
 }
