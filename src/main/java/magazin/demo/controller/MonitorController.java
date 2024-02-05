@@ -35,6 +35,8 @@ public class MonitorController {
         return new ResponseEntity<>(monitorDTO, HttpStatus.OK);
     }
 
+    // todo поиск по серийному номеру
+
     @GetMapping
     public ResponseEntity<List<MonitorsDTO>> findAllMonitors() {
         List<MonitorsDTO> monitors = monitorService.findAllMonitors();
@@ -54,12 +56,13 @@ public class MonitorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMonitor(@PathVariable int id) throws MonitorNotFoundException {
+    public ResponseEntity<String> deleteMonitor(@PathVariable int id) throws MonitorNotFoundException {
         try {
             monitorService.deleteMonitor(id);
+            String message = "Монитор с ID " + id + " удален успешно"; // не пишет
+            return new ResponseEntity<>(message, HttpStatus.NO_CONTENT);
         } catch (ChangeSetPersister.NotFoundException e) {
             throw new RuntimeException(e);
         }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
