@@ -9,10 +9,10 @@ import magazin.demo.enums.DesktopForm;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DesktopComputerDTO {
+    private long id;
     private long serialNumber;
     private String manufacturer;
     private int price;
-    private int itemsInStock;
-
+    private int quantity;
     private DesktopForm form;
 }

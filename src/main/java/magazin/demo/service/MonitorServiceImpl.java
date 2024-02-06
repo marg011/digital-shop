@@ -1,6 +1,6 @@
 package magazin.demo.service;
 
-import magazin.demo.dto.MonitorsDTO;
+import magazin.demo.dto.MonitorDTO;
 import magazin.demo.entity.MonitorEntity;
 import magazin.demo.exception.monitors.MonitorAlreadyExistsException;
 import magazin.demo.exception.monitors.MonitorNotFoundException;
@@ -25,7 +25,7 @@ public class MonitorServiceImpl implements MonitorService {
     }
 
     @Override
-    public MonitorsDTO createMonitor(MonitorsDTO monitorDTO) throws MonitorAlreadyExistsException {
+    public MonitorDTO createMonitor(MonitorDTO monitorDTO) throws MonitorAlreadyExistsException {
         try {
             if (monitorRepository.existsBySerialNumber(monitorDTO.getSerialNumber())) {
                 throw new MonitorAlreadyExistsException("Монитор с таким серийным номером уже существует");
@@ -40,7 +40,7 @@ public class MonitorServiceImpl implements MonitorService {
     }
 
     @Override
-    public MonitorsDTO readMonitorById(long id) throws MonitorNotFoundException {
+    public MonitorDTO readMonitorById(long id) throws MonitorNotFoundException {
         Optional<MonitorEntity> monitorEntityOptional = monitorRepository.findById(id);
 
         if (monitorEntityOptional.isPresent()) {
@@ -52,10 +52,10 @@ public class MonitorServiceImpl implements MonitorService {
     }
 
     @Override
-    public List<MonitorsDTO> findAllMonitors() {
+    public List<MonitorDTO> findAllMonitors() {
         List<MonitorEntity> monitorEntities = monitorRepository.findAll();
 
-        List<MonitorsDTO> monitorDTOs = monitorEntities.stream()
+        List<MonitorDTO> monitorDTOs = monitorEntities.stream()
                 .map(monitorsMapper::entityToDto)
                 .collect(Collectors.toList());
 
@@ -63,7 +63,7 @@ public class MonitorServiceImpl implements MonitorService {
     }
 
     @Override
-    public MonitorsDTO updateMonitor(long id, MonitorsDTO updatedMonitorDTO) throws MonitorNotFoundException {
+    public MonitorDTO updateMonitor(long id, MonitorDTO updatedMonitorDTO) throws MonitorNotFoundException {
         Optional<MonitorEntity> optionalMonitor = monitorRepository.findById(id);
 
         if (optionalMonitor.isPresent()) {

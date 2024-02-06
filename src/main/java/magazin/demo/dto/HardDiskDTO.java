@@ -8,14 +8,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MonitorsDTO {
+public class HardDiskDTO {
 
     @JsonIgnore
     private long id;
+
 
     private long serialNumber;
     private String manufacturer;
     private int price;
     private int quantity;
-    private int diagonal;
+    private int memory;
 }

@@ -1,6 +1,6 @@
 package magazin.demo.service;
 
-import magazin.demo.dto.HardDisksDTO;
+import magazin.demo.dto.HardDiskDTO;
 import magazin.demo.exception.harddisks.HardDiskAlreadyExistsException;
 import magazin.demo.exception.harddisks.HardDiskNotFoundException;
 
@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface HardDiskService {
 
-    HardDisksDTO createHardDisk(HardDisksDTO hardDiskDTO) throws HardDiskAlreadyExistsException;
+    HardDiskDTO createHardDisk(HardDiskDTO hardDiskDTO) throws HardDiskAlreadyExistsException;
 
-    HardDisksDTO readHardDiskById(long id) throws HardDiskNotFoundException;
+    HardDiskDTO readHardDiskById(long id) throws HardDiskNotFoundException;
 
-    List<HardDisksDTO> findAllHardDisks();
+    List<HardDiskDTO> findAllHardDisks();
 
-    HardDisksDTO updateHardDisk(long id, HardDisksDTO updatedHardDiskDTO) throws HardDiskNotFoundException;
+    HardDiskDTO updateHardDisk(long id, HardDiskDTO updatedHardDiskDTO) throws HardDiskNotFoundException;
 
     void deleteHardDisk(long id) throws HardDiskNotFoundException;
 }

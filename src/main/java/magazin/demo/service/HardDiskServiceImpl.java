@@ -1,6 +1,6 @@
 package magazin.demo.service;
 
-import magazin.demo.dto.HardDisksDTO;
+import magazin.demo.dto.HardDiskDTO;
 import magazin.demo.entity.HardDiskEntity;
 import magazin.demo.exception.harddisks.HardDiskAlreadyExistsException;
 import magazin.demo.exception.harddisks.HardDiskNotFoundException;
@@ -25,7 +25,7 @@ public class HardDiskServiceImpl implements HardDiskService {
     }
 
     @Override
-    public HardDisksDTO createHardDisk(HardDisksDTO hardDiskDTO) throws HardDiskAlreadyExistsException {
+    public HardDiskDTO createHardDisk(HardDiskDTO hardDiskDTO) throws HardDiskAlreadyExistsException {
         try {
             if (hardDiskRepository.existsBySerialNumber(hardDiskDTO.getSerialNumber())) {
                 throw new HardDiskAlreadyExistsException("Жесткий диск с таким серийным номером уже существует");
@@ -39,7 +39,7 @@ public class HardDiskServiceImpl implements HardDiskService {
     }
 
     @Override
-    public HardDisksDTO readHardDiskById(long id) throws HardDiskNotFoundException {
+    public HardDiskDTO readHardDiskById(long id) throws HardDiskNotFoundException {
         Optional<HardDiskEntity> hardDiskEntityOptional = hardDiskRepository.findById(id);
 
         if (hardDiskEntityOptional.isPresent()) {
@@ -51,10 +51,10 @@ public class HardDiskServiceImpl implements HardDiskService {
     }
 
     @Override
-    public List<HardDisksDTO> findAllHardDisks() {
+    public List<HardDiskDTO> findAllHardDisks() {
         List<HardDiskEntity> hardDiskEntities = hardDiskRepository.findAll();
 
-        List<HardDisksDTO> hardDiskDTOs = hardDiskEntities.stream()
+        List<HardDiskDTO> hardDiskDTOs = hardDiskEntities.stream()
                 .map(hardDisksMapper::entityToDto)
                 .collect(Collectors.toList());
 
@@ -62,7 +62,7 @@ public class HardDiskServiceImpl implements HardDiskService {
     }
 
     @Override
-    public HardDisksDTO updateHardDisk(long id, HardDisksDTO updatedHardDiskDTO) throws HardDiskNotFoundException {
+    public HardDiskDTO updateHardDisk(long id, HardDiskDTO updatedHardDiskDTO) throws HardDiskNotFoundException {
         Optional<HardDiskEntity> optionalHardDisk = hardDiskRepository.findById(id);
 
         if (optionalHardDisk.isPresent()) {

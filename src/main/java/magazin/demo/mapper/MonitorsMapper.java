@@ -1,6 +1,6 @@
 package magazin.demo.mapper;
 
-import magazin.demo.dto.MonitorsDTO;
+import magazin.demo.dto.MonitorDTO;
 import magazin.demo.entity.MonitorEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,8 +15,8 @@ public interface MonitorsMapper {
     MonitorsMapper INSTANCE = Mappers.getMapper(MonitorsMapper.class);
 
     @Mapping(target = "id", ignore = true)
-    MonitorsDTO entityToDto(MonitorEntity entity);
+    MonitorDTO entityToDto(MonitorEntity entity);
 
     @Mapping(target = "id", ignore = true)
-    MonitorEntity dtoToEntity(MonitorsDTO dto);
+    MonitorEntity dtoToEntity(MonitorDTO dto);
 }

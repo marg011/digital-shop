@@ -9,11 +9,10 @@ import magazin.demo.enums.LaptopSize;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LaptopDTO {
-
+    private long id;
     private long serialNumber;
     private String manufacturer;
     private int price;
-    private int itemsInStock;
-
+    private int quantity;
     private LaptopSize laptopSize;
 }

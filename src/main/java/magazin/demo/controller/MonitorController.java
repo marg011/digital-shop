@@ -1,6 +1,6 @@
 package magazin.demo.controller;
 
-import magazin.demo.dto.MonitorsDTO;
+import magazin.demo.dto.MonitorDTO;
 import magazin.demo.exception.monitors.MonitorAlreadyExistsException;
 import magazin.demo.exception.monitors.MonitorNotFoundException;
 import magazin.demo.service.MonitorService;
@@ -24,29 +24,29 @@ public class MonitorController {
     }
 
     @PostMapping
-    public ResponseEntity<MonitorsDTO> createMonitor(@RequestBody MonitorsDTO monitorDTO) throws MonitorAlreadyExistsException {
-        MonitorsDTO createdMonitor = monitorService.createMonitor(monitorDTO);
+    public ResponseEntity<MonitorDTO> createMonitor(@RequestBody MonitorDTO monitorDTO) throws MonitorAlreadyExistsException {
+        MonitorDTO createdMonitor = monitorService.createMonitor(monitorDTO);
         return new ResponseEntity<>(createdMonitor, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MonitorsDTO> readMonitorById(@PathVariable int id) throws MonitorNotFoundException {
-        MonitorsDTO monitorDTO = monitorService.readMonitorById(id);
+    public ResponseEntity<MonitorDTO> readMonitorById(@PathVariable int id) throws MonitorNotFoundException {
+        MonitorDTO monitorDTO = monitorService.readMonitorById(id);
         return new ResponseEntity<>(monitorDTO, HttpStatus.OK);
     }
 
     // todo поиск по серийному номеру
 
     @GetMapping
-    public ResponseEntity<List<MonitorsDTO>> findAllMonitors() {
-        List<MonitorsDTO> monitors = monitorService.findAllMonitors();
+    public ResponseEntity<List<MonitorDTO>> findAllMonitors() {
+        List<MonitorDTO> monitors = monitorService.findAllMonitors();
         return new ResponseEntity<>(monitors, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MonitorsDTO> updateMonitor(@PathVariable int id, @RequestBody MonitorsDTO updatedMonitorDTO)
+    public ResponseEntity<MonitorDTO> updateMonitor(@PathVariable int id, @RequestBody MonitorDTO updatedMonitorDTO)
             throws MonitorNotFoundException {
-        MonitorsDTO updatedMonitor = null;
+        MonitorDTO updatedMonitor = null;
         try {
             updatedMonitor = monitorService.updateMonitor(id, updatedMonitorDTO);
         } catch (ChangeSetPersister.NotFoundException e) {
