@@ -1,4 +1,4 @@
-package magazin.demo.service;
+package magazin.demo.service.impl;
 
 import magazin.demo.dto.MonitorDTO;
 import magazin.demo.entity.MonitorEntity;
@@ -6,6 +6,7 @@ import magazin.demo.exception.monitors.MonitorAlreadyExistsException;
 import magazin.demo.exception.monitors.MonitorNotFoundException;
 import magazin.demo.mapper.MonitorsMapper;
 import magazin.demo.repository.MonitorRepository;
+import magazin.demo.service.MonitorService;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 

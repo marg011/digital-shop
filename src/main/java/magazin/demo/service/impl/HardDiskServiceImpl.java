@@ -1,4 +1,4 @@
-package magazin.demo.service;
+package magazin.demo.service.impl;
 
 import magazin.demo.dto.HardDiskDTO;
 import magazin.demo.entity.HardDiskEntity;
@@ -6,6 +6,7 @@ import magazin.demo.exception.harddisks.HardDiskAlreadyExistsException;
 import magazin.demo.exception.harddisks.HardDiskNotFoundException;
 import magazin.demo.mapper.HardDisksMapper;
 import magazin.demo.repository.HardDiskRepository;
+import magazin.demo.service.HardDiskService;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 

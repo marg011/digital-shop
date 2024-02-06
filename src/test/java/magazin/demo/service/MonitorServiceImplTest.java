@@ -3,6 +3,7 @@ package magazin.demo.service;
 import magazin.demo.exception.monitors.MonitorAlreadyExistsException;
 import magazin.demo.mapper.MonitorsMapper;
 import magazin.demo.repository.MonitorRepository;
+import magazin.demo.service.impl.MonitorServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

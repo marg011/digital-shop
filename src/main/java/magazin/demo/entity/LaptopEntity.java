@@ -1,9 +1,6 @@
 package magazin.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import magazin.demo.enums.LaptopSize;
 
@@ -21,5 +18,6 @@ public class LaptopEntity {
     private String manufacturer;
     private int price;
     private int quantity;
+    @Enumerated(EnumType.STRING)
     private LaptopSize laptopSize;
 }
