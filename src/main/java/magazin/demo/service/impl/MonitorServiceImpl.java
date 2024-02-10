@@ -43,16 +43,11 @@ public class MonitorServiceImpl implements MonitorService {
 
     @Override
     public MonitorDTO readMonitorById(long id) throws MonitorNotFoundException {
-        Optional<MonitorEntity> monitorEntityOptional = monitorRepository.findById(id);
+        MonitorEntity monitorEntity = monitorRepository.findById(id)
+                .orElseThrow(() -> new MonitorNotFoundException("Монитор с id " + id + " не найден"));
 
-        if (monitorEntityOptional.isPresent()) {
-            MonitorEntity monitorEntity = monitorEntityOptional.get();
-            return monitorsMapper.entityToDto(monitorEntity);
-        } else {
-            throw new MonitorNotFoundException("Монитор с id " + id + " не найден");
-        }
+        return monitorsMapper.entityToDto(monitorEntity);
     }
-
     @Override
     public List<MonitorDTO> findAllMonitors() {
         List<MonitorEntity> monitorEntities = monitorRepository.findAll();
