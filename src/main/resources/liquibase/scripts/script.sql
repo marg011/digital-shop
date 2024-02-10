@@ -1,7 +1,7 @@
 -- liquibase formatted sql
 
 -- changeset Karachevtsev:1
-CREATE TABLE monitors (
+CREATE TABLE monitors_entity (
     id BIGSERIAL PRIMARY KEY,
     serial_number BIGINT,
     manufacturer VARCHAR(255),
@@ -10,9 +10,7 @@ CREATE TABLE monitors (
     diagonal INT  NOT NULL
 );
 
-
-CREATE TABLE hard_disks
- (
+CREATE TABLE hard_disks_entity (
     id BIGSERIAL PRIMARY KEY,
     serial_number BIGINT,
     manufacturer VARCHAR(255),

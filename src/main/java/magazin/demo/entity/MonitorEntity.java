@@ -10,11 +10,12 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Data
+@Table(name = "monitors_entity")
 public class MonitorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private long serialNumber;
     private String manufacturer;
