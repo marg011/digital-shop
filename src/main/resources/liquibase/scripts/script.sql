@@ -5,19 +5,20 @@ CREATE TABLE monitors (
     id BIGSERIAL PRIMARY KEY,
     serial_number BIGINT,
     manufacturer VARCHAR(255),
-    price INT,
-    quantity INT,
-    diagonal INT
+    price INT  NOT NULL,
+    quantity INT  NOT NULL,
+    diagonal INT  NOT NULL
 );
 
 
-CREATE TABLE жесткие_диски (
-    id SERIAL PRIMARY KEY,  -- int8 BIGSERIAL
-    серийный_номер BIGINT,
-    производитель VARCHAR(255),
-    цена INT,
-    количество INT,
-    память INT
+CREATE TABLE hard_disks
+ (
+    id BIGSERIAL PRIMARY KEY,
+    serial_number BIGINT,
+    manufacturer VARCHAR(255),
+    price INT  NOT NULL,
+    quantity INT  NOT NULL,
+    memory INT  NOT NULL
 );
 
 CREATE TABLE desktop_computer_entity
