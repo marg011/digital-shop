@@ -43,15 +43,12 @@ public class HardDiskServiceImpl implements HardDiskService {
 
     @Override
     public HardDiskDTO readHardDiskById(long id) throws HardDiskNotFoundException {
-        Optional<HardDiskEntity> hardDiskEntityOptional = hardDiskRepository.findById(id);
+        HardDiskEntity hardDiskEntity = hardDiskRepository.findById(id)
+                .orElseThrow(() -> new HardDiskNotFoundException("Жесткий диск с id " + id + " не найден"));
 
-        if (hardDiskEntityOptional.isPresent()) {
-            HardDiskEntity hardDiskEntity = hardDiskEntityOptional.get();
-            return hardDisksMapper.entityToDto(hardDiskEntity);
-        } else {
-            throw new HardDiskNotFoundException("Жесткий диск с id " + id + " не найден");
-        }
+        return hardDisksMapper.entityToDto(hardDiskEntity);
     }
+
 
     @Override
     public List<HardDiskDTO> findAllHardDisks() {
