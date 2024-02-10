@@ -2,7 +2,7 @@
 
 -- changeset Karachevtsev:1
 CREATE TABLE мониторы (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY, -- int8 BIGSERIAL
     серийный_номер BIGINT,
     производитель VARCHAR(255),
     цена INT,
@@ -11,15 +11,13 @@ CREATE TABLE мониторы (
 );
 
 CREATE TABLE жесткие_диски (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,  -- int8 BIGSERIAL
     серийный_номер BIGINT,
     производитель VARCHAR(255),
     цена INT,
     количество INT,
     память INT
 );
-
--- changeset margo:1
 
 CREATE TABLE desktop_computer_entity
 (
