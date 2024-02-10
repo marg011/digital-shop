@@ -28,15 +28,16 @@ public class MonitorServiceImpl implements MonitorService {
     @Override
     public MonitorDTO createMonitor(MonitorDTO monitorDTO) throws MonitorAlreadyExistsException {
         try {
-            if (monitorRepository.existsBySerialNumber(monitorDTO.getSerialNumber())) {
-                throw new MonitorAlreadyExistsException("Монитор с таким серийным номером уже существует");
+
+            if (monitorDTO.getId() != 0 && monitorRepository.existsById(monitorDTO.getId())) {
+                throw new MonitorAlreadyExistsException("Монитор с таким ID уже существует");
             }
+
             MonitorEntity monitorEntity = monitorsMapper.dtoToEntity(monitorDTO);
             MonitorEntity savedEntity = monitorRepository.save(monitorEntity);
             return monitorsMapper.entityToDto(savedEntity);
         } catch (DataIntegrityViolationException e) {
-
-            throw new MonitorAlreadyExistsException("Монитор с таким серийным номером уже существует");
+            throw new MonitorAlreadyExistsException("Монитор с таким ID уже существует");
         }
     }
 

@@ -17,7 +17,6 @@ public class HardDiskEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "serial_number")
     private long serialNumber;
     private String manufacturer;
     private int price;

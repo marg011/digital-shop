@@ -28,14 +28,16 @@ public class HardDiskServiceImpl implements HardDiskService {
     @Override
     public HardDiskDTO createHardDisk(HardDiskDTO hardDiskDTO) throws HardDiskAlreadyExistsException {
         try {
-            if (hardDiskRepository.existsBySerialNumber(hardDiskDTO.getSerialNumber())) {
-                throw new HardDiskAlreadyExistsException("Жесткий диск с таким серийным номером уже существует");
+
+            if (hardDiskDTO.getId() != 0 && hardDiskRepository.existsById(hardDiskDTO.getId())) {
+                throw new HardDiskAlreadyExistsException("Жесткий диск с таким ID уже существует");
             }
+
             HardDiskEntity hardDiskEntity = hardDisksMapper.dtoToEntity(hardDiskDTO);
             HardDiskEntity savedEntity = hardDiskRepository.save(hardDiskEntity);
             return hardDisksMapper.entityToDto(savedEntity);
         } catch (DataIntegrityViolationException e) {
-            throw new HardDiskAlreadyExistsException("Жесткий диск с таким серийным номером уже существует");
+            throw new HardDiskAlreadyExistsException("Жесткий диск с таким ID уже существует");
         }
     }
 
