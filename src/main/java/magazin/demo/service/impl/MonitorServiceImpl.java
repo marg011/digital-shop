@@ -30,24 +30,25 @@ public class MonitorServiceImpl implements MonitorService {
         try {
 
             if (monitorDTO.getId() != 0 && monitorRepository.existsById(monitorDTO.getId())) {
-                throw new MonitorAlreadyExistsException("Монитор с таким ID уже существует");
+                throw new MonitorAlreadyExistsException("Monitor with this ID already exists");
             }
 
             MonitorEntity monitorEntity = monitorsMapper.dtoToEntity(monitorDTO);
             MonitorEntity savedEntity = monitorRepository.save(monitorEntity);
             return monitorsMapper.entityToDto(savedEntity);
         } catch (DataIntegrityViolationException e) {
-            throw new MonitorAlreadyExistsException("Монитор с таким ID уже существует");
+            throw new MonitorAlreadyExistsException("Monitor with this ID already exists");
         }
     }
 
     @Override
     public MonitorDTO readMonitorById(long id) throws MonitorNotFoundException {
         MonitorEntity monitorEntity = monitorRepository.findById(id)
-                .orElseThrow(() -> new MonitorNotFoundException("Монитор с id " + id + " не найден"));
+                .orElseThrow(() -> new MonitorNotFoundException("Monitor with id " + id + " not found"));
 
         return monitorsMapper.entityToDto(monitorEntity);
     }
+
     @Override
     public List<MonitorDTO> findAllMonitors() {
         List<MonitorEntity> monitorEntities = monitorRepository.findAll();
@@ -76,7 +77,7 @@ public class MonitorServiceImpl implements MonitorService {
 
             return monitorsMapper.entityToDto(updatedMonitorEntity);
         } else {
-            throw new MonitorNotFoundException("Монитор с id " + id + " не найден");
+            throw new MonitorNotFoundException("Monitor with id " + id + " not found");
         }
     }
 
@@ -87,7 +88,7 @@ public class MonitorServiceImpl implements MonitorService {
         if (optionalMonitor.isPresent()) {
             monitorRepository.delete(optionalMonitor.get());
         } else {
-            throw new MonitorNotFoundException("Монитор с id " + id + " не найден");
+            throw new MonitorNotFoundException("Monitor with id " + id + " not found");
         }
     }
 }

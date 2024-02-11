@@ -30,21 +30,21 @@ public class HardDiskServiceImpl implements HardDiskService {
         try {
 
             if (hardDiskDTO.getId() != 0 && hardDiskRepository.existsById(hardDiskDTO.getId())) {
-                throw new HardDiskAlreadyExistsException("Жесткий диск с таким ID уже существует");
+                throw new HardDiskAlreadyExistsException("Hard disk with such ID already exists");
             }
 
             HardDiskEntity hardDiskEntity = hardDisksMapper.dtoToEntity(hardDiskDTO);
             HardDiskEntity savedEntity = hardDiskRepository.save(hardDiskEntity);
             return hardDisksMapper.entityToDto(savedEntity);
         } catch (DataIntegrityViolationException e) {
-            throw new HardDiskAlreadyExistsException("Жесткий диск с таким ID уже существует");
+            throw new HardDiskAlreadyExistsException("Hard disk with such ID already exists");
         }
     }
 
     @Override
     public HardDiskDTO readHardDiskById(long id) throws HardDiskNotFoundException {
         HardDiskEntity hardDiskEntity = hardDiskRepository.findById(id)
-                .orElseThrow(() -> new HardDiskNotFoundException("Жесткий диск с id " + id + " не найден"));
+                .orElseThrow(() -> new HardDiskNotFoundException("Hard disk with id " + id + " not found"));
 
         return hardDisksMapper.entityToDto(hardDiskEntity);
     }
@@ -74,7 +74,7 @@ public class HardDiskServiceImpl implements HardDiskService {
 
             return hardDisksMapper.entityToDto(updatedHardDiskEntity);
         } else {
-            throw new HardDiskNotFoundException("Жесткий диск с id " + id + " не найден");
+            throw new HardDiskNotFoundException("Hard disk with id " + id + " not found");
         }
     }
 
@@ -85,7 +85,7 @@ public class HardDiskServiceImpl implements HardDiskService {
         if (optionalHardDisk.isPresent()) {
             hardDiskRepository.delete(optionalHardDisk.get());
         } else {
-            throw new HardDiskNotFoundException("Жесткий диск с id " + id + " не найден");
+            throw new HardDiskNotFoundException("Hard disk with id " + id + " not found");
         }
     }
 }
