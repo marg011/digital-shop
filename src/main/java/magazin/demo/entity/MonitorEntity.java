@@ -23,4 +23,8 @@ public class MonitorEntity {
     private int quantity;
     private int diagonal;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
 }

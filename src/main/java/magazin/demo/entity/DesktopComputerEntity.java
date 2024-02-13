@@ -20,4 +20,8 @@ public class DesktopComputerEntity {
     private int quantity;
     @Enumerated(EnumType.STRING)
     private DesktopForm form;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 }

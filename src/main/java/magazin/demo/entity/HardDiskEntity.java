@@ -23,4 +23,8 @@ public class HardDiskEntity {
     private int quantity;
     private int memory;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
 }

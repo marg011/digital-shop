@@ -20,4 +20,8 @@ public class LaptopEntity {
     private int quantity;
     @Enumerated(EnumType.STRING)
     private LaptopSize laptopSize;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 }
