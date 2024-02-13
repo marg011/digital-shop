@@ -40,3 +40,20 @@ CREATE TABLE laptop_entity
   laptop_size varchar(2) NOT NULL,
   primary key (id)
 );
+
+CREATE TABLE user_entity (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    role VARCHAR(255) NOT NULL
+);
+
+ALTER TABLE monitors_entity ADD COLUMN user_id BIGINT;
+ALTER TABLE hard_disks_entity ADD COLUMN user_id BIGINT;
+ALTER TABLE desktop_computer_entity ADD COLUMN user_id BIGINT;
+ALTER TABLE laptop_entity ADD COLUMN user_id BIGINT;
+
+ALTER TABLE monitors_entity ADD CONSTRAINT fk_monitors_user FOREIGN KEY (user_id) REFERENCES user_entity(id);
+ALTER TABLE hard_disks_entity ADD CONSTRAINT fk_hard_disks_user FOREIGN KEY (user_id) REFERENCES user_entity(id);
+ALTER TABLE desktop_computer_entity ADD CONSTRAINT fk_desktop_computer_user FOREIGN KEY (user_id) REFERENCES user_entity(id);
+ALTER TABLE laptop_entity ADD CONSTRAINT fk_laptop_user FOREIGN KEY (user_id) REFERENCES user_entity(id);
